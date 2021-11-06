@@ -1,3 +1,10 @@
+# 1. git clone + url 
+# 2. switch to dev branch
+# 3. make a new branch when write new features
+# 4. merge branch to dev branch first.
+
+
+
 
 
 
