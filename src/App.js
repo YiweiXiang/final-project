@@ -2,6 +2,9 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import getMovie from './components/js/fetchAPI'
 
+import NavigationBar from './components/index'
+import Container from './components/Container'
+import MovieCard from './components/MovieCard'
 
 
 function App() {
@@ -17,7 +20,7 @@ function App() {
     data:[]
   });
   const [page, setPage] = useState(1);
-
+  
   useEffect(() => {
     getMovie(API_URL, page)
       .then((res) => {
@@ -25,16 +28,22 @@ function App() {
           loading:false, 
           data:res.results
         })
+        console.log(res)
       })
       .catch(e => console.log("error: ", e));
   }, []);
-
+  
   return (
     <div className="App">
-      {/* {movies && <pre>{JSON.stringify(movies.results, null, 2)}</pre>} */}
-      {!movies.loading && movies.data.map((ele) => {
-        return <li key={ele.id}>{ele.title}</li>
+      <NavigationBar />
+      {
+        !movies.loading && <Container movieList={movies.data}/>
+      }
+      { !movies.loading && movies.data.map(el => {
+        return <MovieCard movie={el} />
       })}
+      
+      
     </div>
   );
 }

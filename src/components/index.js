@@ -1,9 +1,10 @@
 import React from 'react'
+import NavigationBar from './Nav'
 
 function index() {
     return (
         <div>
-            This is main js file;
+            <NavigationBar />
         </div>
     )
 }
